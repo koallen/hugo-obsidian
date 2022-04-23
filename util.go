@@ -20,12 +20,19 @@ func processTarget(source string) string {
 	if !isInternal(source) {
 		return source
 	}
+
+	// same-page links shouldn't produce any backlinks
+	if strings.HasPrefix(source, "#") {
+		return "#"
+	}
+	// get rid of fragment identifier first
+	source = strings.Split(source, "#")[0]
+
 	if strings.HasPrefix(source, "/") {
 		return strings.TrimSuffix(source, ".md")
 	}
 	res := "/" + strings.TrimSuffix(strings.TrimSuffix(source, ".html"), ".md")
 	res, _ = url.PathUnescape(res)
-	res = strings.Split(res, "#")[0]
 	res = strings.TrimSpace(res)
 	res = UnicodeSanitize(res)
 	return strings.ReplaceAll(url.PathEscape(res), "%2F", "/")
