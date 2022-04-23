@@ -1,9 +1,9 @@
-module github.com/jackyzha0/hugo-obsidian
+module github.com/koallen/hugo-obsidian
 
 go 1.16
 
 require (
-	github.com/BurntSushi/toml v0.4.1 // indirect
+	github.com/BurntSushi/toml v0.4.1
 	github.com/PuerkitoBio/goquery v1.8.0
 	github.com/abhinav/goldmark-wikilink v0.3.0
 	github.com/gernest/front v0.0.0-20210301115436-8a0b0a782d0a
